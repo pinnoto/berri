@@ -1,0 +1,25 @@
+name: berri
+version: 0.1.0
+
+authors:
+  - acoolstraw <acoolstraw@protonmail.com>
+
+targets:
+  berri:
+    main: src/main.cr
+
+dependencies:
+  grip:
+    github: grip-framework/grip
+  jwt:
+    github: crystal-community/jwt
+  granite:
+    github: amberframework/granite
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+  crystal-argon2:
+    github: Axentro/crystal-argon2
+
+crystal: 1.0.0
+
+license: GPL-3.0

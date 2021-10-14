@@ -1,0 +1,13 @@
+lib
+berri.db
+.idea/vcs.xml
+.idea/modules.xml
+.idea/berri.iml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/codestream.xml
+.idea/.gitignore
+shard.lock
+berri
+berri.o
+main
+main.o

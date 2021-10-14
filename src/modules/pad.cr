@@ -1,0 +1,3 @@
+module Berri::Pad
+
+end
