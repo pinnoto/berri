@@ -79,6 +79,37 @@ class AuthController < Grip::Controllers::Http
                 .halt
         end
     end
+
+    def user_info(context : Context) : Context
+        begin 
+            token =
+                context
+                    .get_req_header("Authorization")
+                    .split("Bearer ")
+                    .last
+    
+            payload = JWT.decode(token, ENV["BERRI_SECRET_KEY"], JWT::Algorithm::HS512)
+            puts payload
+            #db_user = User.find_by(id: payload["id"].to_i)
+
+            if db_user
+              context
+                .put_status(200)
+                .json({"username" => "#{db_user.username}"})
+                .halt()
+            else
+              context
+                .put_status(400)
+                .json({"error" => "400"})
+                .halt()
+            end
+        rescue
+            context
+                .put_status(400)
+                .json({"error" => "Authentication error"})
+                .halt
+        end
+    end
 end
 
 class TokenAuthorization
@@ -91,7 +122,7 @@ class TokenAuthorization
                 .split("Bearer ")
                 .last
 
-            payload, header = JWT.decode(token, ENV["BERRI_SECRET_KEY"], JWT::Algorithm::HS512)
+            payload = JWT.decode(token, ENV["BERRI_SECRET_KEY"], JWT::Algorithm::HS512)
 
             context
         rescue

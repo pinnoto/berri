@@ -7,9 +7,13 @@ require "jwt"
 require "yaml"
 require "granite/adapter/sqlite"
 
+# Mandatory components
+require "./components/core/auth.cr"
+require "./components/core/core.cr"
+require "./components/core/db.cr"
+
 # Put any library requirements before these two lines
-require "./components/core/*"
-require "./components/external/*"
+
 
 
 module Berri::Core
@@ -27,13 +31,15 @@ module Berri::Core
   
       scope "/api" do
         scope "/v1" do
+          post "/register", AuthController, as: register
+          post "/login", AuthController, as: login
+          
           pipe_through :jwt_auth
+
+          get "/user_info", AuthController, as: user_info
+          
         end
       end
-      
-      post "/api/v1/register", AuthController, as: register
-      post "/api/v1/login", AuthController, as: login
-    
     end
   
     def port

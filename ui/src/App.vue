@@ -7,6 +7,14 @@
     <router-view/>
   </div>
 </template>
+<script>
+export default {
+  name: 'App',
+  mounted() {
+    this.axios.get('/api/v1/auth/user_info')
+  }
+}
+</script>
 
 <style>
 #app {

@@ -17,5 +17,5 @@ class User < Granite::Base
     column password : String
 end
 
-User.migrator.drop_and_create
+# User.migrator.drop_and_create
 
