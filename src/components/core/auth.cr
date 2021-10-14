@@ -1,4 +1,3 @@
-require "../main.cr"
 require "./db.cr"
 
 class AuthController < Grip::Controllers::Http

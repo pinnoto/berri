@@ -5,9 +5,12 @@ require "sqlite3"
 require "granite"
 require "jwt"
 require "yaml"
+require "granite/adapter/sqlite"
+
 # Put any library requirements before these two lines
-require "./core-modules/*"
-require "./modules/*"
+require "./components/core/*"
+require "./components/external/*"
+
 
 module Berri::Core
   VERSION = "0.1.0"

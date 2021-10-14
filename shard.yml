@@ -20,6 +20,6 @@ dependencies:
   crystal-argon2:
     github: Axentro/crystal-argon2
 
-crystal: 1.0.0
+crystal: 1.2.0
 
 license: GPL-3.0
