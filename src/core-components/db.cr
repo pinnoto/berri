@@ -7,7 +7,7 @@ module Berri::DB
     end
 end
 
-Berri::DB.sqlite("sqlite", "sqlite3://./db.sqlite3")
+Berri::DB.sqlite("sqlite", "sqlite3://./berri.db")
 
 class User < Granite::Base
     connection sqlite
