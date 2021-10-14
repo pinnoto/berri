@@ -88,21 +88,25 @@ class AuthController < Grip::Controllers::Http
                     .split("Bearer ")
                     .last
     
-            payload = JWT.decode(token, ENV["BERRI_SECRET_KEY"], JWT::Algorithm::HS512)
-            puts payload
-            #db_user = User.find_by(id: payload["id"].to_i)
+            payload, header = JWT.decode(token, ENV["BERRI_SECRET_KEY"], JWT::Algorithm::HS512)
+
+            db_user = User.find_by(id: payload["id"].to_s.to_i)
 
             if db_user
-              context
-                .put_status(200)
-                .json({"username" => "#{db_user.username}"})
-                .halt()
+                context
+                    .put_status(200)
+                    .json({"username" => "#{db_user.username}"})
+                    .halt()
             else
-              context
-                .put_status(400)
-                .json({"error" => "400"})
-                .halt()
+                context
+                    .put_status(400)
+                    .json({"error" => "400"})
+                    .halt()
             end
+            context
+                .put_status(200)
+                .json({"error" => "success"})
+                .halt
         rescue
             context
                 .put_status(400)

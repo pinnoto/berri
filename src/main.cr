@@ -8,9 +8,9 @@ require "yaml"
 require "granite/adapter/sqlite"
 
 # Mandatory components
+require "./components/core/db.cr"
 require "./components/core/auth.cr"
 require "./components/core/core.cr"
-require "./components/core/db.cr"
 
 # Put any library requirements before these two lines
 
@@ -37,7 +37,7 @@ module Berri::Core
           pipe_through :jwt_auth
 
           get "/user_info", AuthController, as: user_info
-          
+          post "/upload_file", FileController, as: upload_file
         end
       end
     end
