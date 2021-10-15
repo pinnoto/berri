@@ -33,11 +33,10 @@ module Berri::Core
         scope "/v1" do
           post "/register", AuthController, as: register
           post "/login", AuthController, as: login
-          
+          post "/upload_file", FileController, as: upload_file
           pipe_through :jwt_auth
 
           get "/user_info", AuthController, as: user_info
-          post "/upload_file", FileController, as: upload_file
         end
       end
     end
