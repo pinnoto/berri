@@ -1,13 +1,13 @@
 module Berri::DB
-    def self.sqlite(name, url)
-        Granite::Connections << Granite::Adapter::Sqlite.new(name: name, url: url)
+    def self.mysql(name, url)
+        Granite::Connections << Granite::Adapter::Mysql.new(name: "mysql", url: "mysql://root:nodeIsGod@127.0.0.1/berri")
     end
 end
 
-Berri::DB.sqlite("sqlite", "sqlite3://./berri.db")
+Berri::DB.mysql("mysql", "mysql://root:nodeIsGod@127.0.0.1/berri")
 
 class User < Granite::Base
-    connection sqlite
+    connection mysql
 
     column id : Int64, primary: true
     column username : String
@@ -17,5 +17,18 @@ class User < Granite::Base
     column password : String
 end
 
-# User.migrator.drop_and_create
+#class BerriObject < Granite::Base
+#    connection mysql
+#
+#    column id : String, primary: true
+#    column directory : String
+#    column folder : Int64
+#    column name : String
+#    column size : String?
+#    column created_at : Time
+#    column type : String
+#    column owner : Int64
+#end
+
+#User.migrator.drop_and_create
 

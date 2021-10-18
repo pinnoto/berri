@@ -1,14 +1,3 @@
-module BerriFile < Granite::Base
-    connection sqlite
-
-    column id : Int64, primary: true
-    column username : String
-    column email : String
-    column real_name : String?
-    column created_at : Time
-    column password : String
-end
-
 class FileController < Grip::Controllers::Http
     def upload_file(context : Context) : Context
         begin 

@@ -1,11 +1,13 @@
 require "grip"
 require "crystal-argon2"
 require "db"
-require "sqlite3"
+#require "sqlite3"
+require "mysql"
 require "granite"
 require "jwt"
 require "yaml"
-require "granite/adapter/sqlite"
+#require "granite/adapter/sqlite"
+require "granite/adapter/mysql"
 
 # Mandatory components
 require "./components/core/db.cr"

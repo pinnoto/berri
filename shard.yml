@@ -15,8 +15,8 @@ dependencies:
     github: crystal-community/jwt
   granite:
     github: amberframework/granite
-  sqlite3:
-    github: crystal-lang/crystal-sqlite3
+  mysql:
+    github: crystal-lang/crystal-mysql
   crystal-argon2:
     github: Axentro/crystal-argon2
 
