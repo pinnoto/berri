@@ -52,6 +52,7 @@ class AuthController < Grip::Controllers::Http
         password = params["password"]?
 
         if email && password
+            # dummy, fix this!
             db_user = User.find_by(username: email.to_s)
 
             if db_user
